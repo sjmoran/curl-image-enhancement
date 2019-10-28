@@ -1,2 +1,2 @@
-# deepraw2rgb
-DeepRaw2Rgb
+# DeepRaw2Rgb: a neural image processing pipeline
+
