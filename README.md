@@ -1,3 +1,3 @@
-# DeepRaw2Rgb: a neural image processing pipeline
+# DIFAR: Deep Image Formation and Retouching
 
 Coming soon ..
