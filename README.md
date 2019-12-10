@@ -25,7 +25,7 @@ If you do use ideas from the paper in your research please kindly consider citin
 
 * __Samsung S7__: this dataset can be downloaded [here](https://www.kaggle.com/knn165897/s7-isp-dataset). The validation and testing images are listed below, the remaining images serve as our training dataset. For all results in the paper we use random crops of patch size 512x512 pixels during training.
 
-  * Validation Dataset Images
+  * __Validation Dataset Images__
 
     * S7-ISP-Dataset-20161110_125321
     * S7-ISP-Dataset-20161109_131627
@@ -39,7 +39,7 @@ If you do use ideas from the paper in your research please kindly consider citin
     * S7-ISP-Dataset-20161109_140043
 
 
-  * Test Dataset Images
+  * __Test Dataset Images__
   
     * S7-ISP-Dataset-20161110_130812
     * S7-ISP-Dataset-20161110_120803
