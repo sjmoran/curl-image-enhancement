@@ -38,6 +38,6 @@ Repository for the paper DIFAR: Deep Image Formation and Retouching. You will fi
     * S7-ISP-Dataset-20161110_130117
     * S7-ISP-Dataset-20161109_134017
     
-* *Adobe-DPE*: this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). After downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the DeepPhotoEnhancer (DPE) [paper](https://github.com/nothinglo/Deep-Photo-Enhancer). Please contact me or raise a Gitlab issue if you need assistance with this.
+* *Adobe-DPE*: this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). After downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the DeepPhotoEnhancer (DPE) [paper](https://github.com/nothinglo/Deep-Photo-Enhancer). Please contact me or raise a Gitlab issue if you need assistance with this (or the Adobe-UPE dataset below).
 
-* *Adobe-UPE*: this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). Again, after downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the Underexposed Photo Enhancement Using Deep Illumination Estimation (DeepUPE) [paper](https://github.com/wangruixing/DeepUPE). Please contact me or raise a Gitlab issue if you need assistance with this.
+* *Adobe-UPE*: this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). Again, after downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the Underexposed Photo Enhancement Using Deep Illumination Estimation (DeepUPE) [paper](https://github.com/wangruixing/DeepUPE). 
