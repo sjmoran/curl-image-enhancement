@@ -5,7 +5,18 @@
 <p align="center">
 <img src="./images/teaser.png" width="80%"/>
 </p>
-Repository for the paper DIFAR: Deep Image Formation and Retouching. You will find the code, pre-trained models, information of the datasets, and information on the training procedure.
+Repository for the paper DIFAR: Deep Image Formation and Retouching. You will find the code, pre-trained models, information of the datasets, and information on the training procedure. Please raise a Github issue if you need assistance of have any questions on the research. 
+
+If you do use ideas from the paper in your research please kindly consider citing:
+
+@misc{moran2019difar,
+    title={DIFAR: Deep Image Formation and Retouching},
+    author={Sean Moran and Gregory Slabaugh},
+    year={2019},
+    eprint={1911.13175},
+    archivePrefix={arXiv},
+    primaryClass={eess.IV}
+}
 
 ### Datasets
 
