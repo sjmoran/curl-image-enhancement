@@ -36,4 +36,4 @@ Repository for the paper DIFAR: Deep Image Formation and Retouching. You will fi
     * S7-ISP-Dataset-20161109_184304
     * S7-ISP-Dataset-20161109_131033
     * S7-ISP-Dataset-20161110_130117
-S7-ISP-Dataset-20161109_134017
+    * S7-ISP-Dataset-20161109_134017
