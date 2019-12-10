@@ -12,6 +12,8 @@ Huawei Noah's Ark Lab
 Repository for the paper DIFAR: Deep Image Formation and Retouching. Here you will find the code, pre-trained models, information of the datasets, and information on the training procedure for our models. Please raise a Github issue if you need assistance of have any questions on the research. 
 <p></p>
 
+### Bibtex
+
 If you do use ideas from the paper in your research please kindly consider citing as below:
 
 ```
