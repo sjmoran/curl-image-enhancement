@@ -1,8 +1,8 @@
 # DIFAR: Deep Image Formation and Retouching (Pre-print, paper under review)
 
-[Sean Moran](http://www.seanjmoran.com)<sup>1</sup>, [Greg Slabaugh](http://gregslabaugh.net/)<sup>2</sup>
+[Sean Moran](http://www.seanjmoran.com), [Greg Slabaugh](http://gregslabaugh.net/)
 
-<sup></sup>Huawei Noah's Ark Lab <sup>
+<supHuawei Noah's Ark Lab </sup>
 
 ### [[Paper]](https://arxiv.org/pdf/1911.13175) 
 
