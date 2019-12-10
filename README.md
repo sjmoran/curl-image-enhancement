@@ -5,7 +5,7 @@
 <p align="center">
 <img src="./images/teaser.png" width="80%"/>
 </p>
-Repository for the paper DIFAR: Deep Image Formation and Retouching
+Repository for the paper DIFAR: Deep Image Formation and Retouching. You will find the code, pre-trained models, information of the datasets, and information on the training procedure.
 
 ### Datasets
 
