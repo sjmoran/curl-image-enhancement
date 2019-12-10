@@ -23,7 +23,7 @@ If you do use ideas from the paper in your research please kindly consider citin
 
 ### Datasets
 
-* _Samsung S7_: this dataset can be downloaded [here](https://www.kaggle.com/knn165897/s7-isp-dataset). We use images for our test dataset, images for our validation dataset and the remaining images for training
+* __Samsung S7__: this dataset can be downloaded [here](https://www.kaggle.com/knn165897/s7-isp-dataset). We use images for our test dataset, images for our validation dataset and the remaining images for training
 
   * Validation Dataset Images
 
@@ -52,6 +52,6 @@ If you do use ideas from the paper in your research please kindly consider citin
     * S7-ISP-Dataset-20161110_130117
     * S7-ISP-Dataset-20161109_134017
     
-* _Adobe-DPE_: this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). After downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the DeepPhotoEnhancer (DPE) [paper](https://github.com/nothinglo/Deep-Photo-Enhancer). Please contact me or raise a Gitlab issue if you need assistance with this (or the Adobe-UPE dataset below).
+* __Adobe-DPE__: this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). After downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the DeepPhotoEnhancer (DPE) [paper](https://github.com/nothinglo/Deep-Photo-Enhancer). Please contact me or raise a Gitlab issue if you need assistance with this (or the Adobe-UPE dataset below).
 
-* _Adobe-UPE_: this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). Again, after downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the Underexposed Photo Enhancement Using Deep Illumination Estimation (DeepUPE) [paper](https://github.com/wangruixing/DeepUPE). 
+* __Adobe-UPE__: this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). Again, after downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the Underexposed Photo Enhancement Using Deep Illumination Estimation (DeepUPE) [paper](https://github.com/wangruixing/DeepUPE). 
