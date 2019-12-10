@@ -37,3 +37,5 @@ Repository for the paper DIFAR: Deep Image Formation and Retouching. You will fi
     * S7-ISP-Dataset-20161109_131033
     * S7-ISP-Dataset-20161110_130117
     * S7-ISP-Dataset-20161109_134017
+    
+* *DIFAR-DPE*: this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). After downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the DeepPhotoEnhancer (DPE) [paper](https://github.com/nothinglo/Deep-Photo-Enhancer).
