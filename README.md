@@ -1,11 +1,11 @@
-# DIFAR: Deep Image Formation and Retouching (Preprint, paper under review)
+# DIFAR: Deep Image Formation and Retouching (Pre-print, paper under review)
 
 ### [[Paper]](https://arxiv.org/pdf/1911.13175) 
 
 <p align="center">
 <img src="./images/teaser.png" width="80%"/>
 </p>
-Repository for the paper DIFAR: Deep Image Formation and Retouching. Here you will find the code, pre-trained models, information of the datasets, and information on the training procedure for our models. Please raise a Github issue if you need assistance of have any questions on the research. 
+__Repository for the paper DIFAR: Deep Image Formation and Retouching__. Here you will find the code, pre-trained models, information of the datasets, and information on the training procedure for our models. Please raise a Github issue if you need assistance of have any questions on the research. 
 <p></p>
 
 If you do use ideas from the paper in your research please kindly consider citing as below:
