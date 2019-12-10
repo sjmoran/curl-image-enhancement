@@ -2,7 +2,7 @@
 
 [Sean Moran](http://www.seanjmoran.com), [Greg Slabaugh](http://gregslabaugh.net/)
 
-<sup>Huawei Noah's Ark Lab </sup>
+Huawei Noah's Ark Lab
 
 ### [[Paper]](https://arxiv.org/pdf/1911.13175) 
 
