@@ -1,4 +1,4 @@
-# DIFAR: Deep Image Formation and Retouching
+# DIFAR: Deep Image Formation and Retouching (Preprint, paper under review)
 
 ### [[Paper]](https://arxiv.org/pdf/1911.13175) 
 
@@ -9,6 +9,7 @@ Repository for the paper DIFAR: Deep Image Formation and Retouching. You will fi
 
 If you do use ideas from the paper in your research please kindly consider citing:
 
+```
 @misc{moran2019difar,
     title={DIFAR: Deep Image Formation and Retouching},
     author={Sean Moran and Gregory Slabaugh},
@@ -17,6 +18,7 @@ If you do use ideas from the paper in your research please kindly consider citin
     archivePrefix={arXiv},
     primaryClass={eess.IV}
 }
+```
 
 ### Datasets
 
