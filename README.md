@@ -1,4 +1,4 @@
-# DIFAR: CURL: Neural Curve Layers forGlobal Image Enhancement (Pre-print, paper under review)
+# CURL: Neural Curve Layers forGlobal Image Enhancement (Pre-print, paper under review)
 
 [Sean Moran](http://www.seanjmoran.com), Steven McDonagh, Ales Leonardis, [Greg Slabaugh](http://gregslabaugh.net/)
 
