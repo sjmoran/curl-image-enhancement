@@ -19,7 +19,7 @@ If you do use ideas from the paper in your research please kindly consider citin
 ```
 @misc{moran2019difar,
     title={CURL: Neural Curve Layers for Global Image Enhancement},
-    author={Sean Moran, Steven McDonagh, Ales Leonardis, Gregory Slabaugh},
+    author={Sean Moran, Ales Leonardis, Gregory Slabaugh, Steven McDonagh}
     year={2019},
     eprint={1911.13175},
     archivePrefix={arXiv},
