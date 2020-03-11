@@ -17,7 +17,7 @@ Repository for the paper CURL: Neural Curve Layers for Global Image Enhancement.
 If you do use ideas from the paper in your research please kindly consider citing as below:
 
 ```
-@misc{moran2019difar,
+@misc{moran2019curl,
     title={CURL: Neural Curve Layers for Global Image Enhancement},
     author={Sean Moran, Ales Leonardis, Gregory Slabaugh, Steven McDonagh}
     year={2019},
