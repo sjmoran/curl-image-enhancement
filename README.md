@@ -1,6 +1,6 @@
 # CURL: Neural Curve Layers for Global Image Enhancement (Pre-print, paper under review)
 
-[Sean Moran](http://www.seanjmoran.com),  Steven McDonagh, Greg Slabaugh](http://gregslabaugh.net/)
+[Sean Moran](http://www.seanjmoran.com),  Steven McDonagh, [Greg Slabaugh](http://gregslabaugh.net/)
 
 Huawei Noah's Ark Lab
 
