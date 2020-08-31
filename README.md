@@ -12,10 +12,6 @@ Huawei Noah's Ark Lab
 Repository links for the paper CURL: Neural Curve Layers for Global Image Enhancement. Here you will find a link to the code and information of the datasets. Please raise a Github issue if you need assistance of have any questions on the research. 
 <p></p>
 
-### Code
-
-**Code will appear [here](https://github.com/huawei-noah) after the paper has been accepted for conference presentation.**
-
 ### Bibtex
 
 If you do use ideas from the paper in your research please kindly consider citing as below:
