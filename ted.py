@@ -219,11 +219,11 @@ class LocalNet(nn.Module):
 class MidNet2(nn.Module):
 
     def forward(self, x_in):
-        """FIXME! briefly describe function
+        """Network with dilation rate 2
 
-        :param x_in: 
-        :returns: 
-        :rtype: 
+        :param x_in: input convolutional features        
+        :returns: processed convolutional features        
+        :rtype: Tensor
 
         """
         x = self.lrelu(self.conv1((x_in)))
@@ -236,9 +236,9 @@ class MidNet2(nn.Module):
     def __init__(self, in_channels=16):
         """FIXME! briefly describe function
 
-        :param in_channels: 
-        :returns: 
-        :rtype: 
+        :param in_channels: Input channels
+        :returns: N/A
+        :rtype: N/A
 
         """
         super(MidNet2, self).__init__()
@@ -269,9 +269,9 @@ class MidNet4(nn.Module):
     def __init__(self, in_channels=16):
         """FIXME! briefly describe function
 
-        :param in_channels: 
-        :returns: 
-        :rtype: 
+        :param in_channels: Input channels
+        :returns: N/A
+        :rtype: N/A
 
         """
         super(MidNet4, self).__init__()
