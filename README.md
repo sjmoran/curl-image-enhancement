@@ -12,6 +12,14 @@ Huawei Noah's Ark Lab
 Repository links for the paper CURL: Neural Curve Layers for Global Image Enhancement. Here you will find a link to the code and information of the datasets. Please raise a Github issue if you need assistance of have any questions on the research. 
 <p></p>
 
+### CURL for RGB images
+
+__CURL_for_RGB_images.zip__ contains the model for RGB images courtsey of [hermosayhl](https://github.com/hermosayhl)
+
+### Pretrained models weights
+
+__CURL_for_RGB_images.zip__ contains pre-trained weights for RGB images courtsey of [hermosayhl](https://github.com/hermosayhl)
+
 ### Bibtex
 
 If you do use ideas from the paper in your research please kindly consider citing as below:
