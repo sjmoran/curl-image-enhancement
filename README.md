@@ -14,11 +14,11 @@ Repository links for the paper CURL: Neural Curve Layers for Global Image Enhanc
 
 ### CURL for RGB images
 
-- __CURL_for_RGB_images.zip__ contains the TED model for RGB images courtsey of [hermosayhl](https://github.com/hermosayhl)
+- __CURL_for_RGB_images.zip__ contains the TED model for RGB images - courtsey of Github user [hermosayhl](https://github.com/hermosayhl)
 
 ### Pretrained models weights
 
-- __CURL_for_RGB_images.zip__ contains pre-trained weights for RGB images courtsey of [hermosayhl](https://github.com/hermosayhl)
+- __CURL_for_RGB_images.zip__ contains pre-trained weights for RGB images - courtsey of Github user [hermosayhl](https://github.com/hermosayhl)
 
 ### Bibtex
 
