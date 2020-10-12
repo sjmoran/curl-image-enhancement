@@ -1,4 +1,4 @@
-# CURL: Neural Curve Layers for Global Image Enhancement (Pre-print, paper under review)
+# CURL: Neural Curve Layers for Global Image Enhancement (Accepted to ICPR 2020)
 
 [Sean Moran](http://www.seanjmoran.com),  Steven McDonagh, [Greg Slabaugh](http://gregslabaugh.net/)
 
