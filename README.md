@@ -4,7 +4,7 @@
 
 Huawei Noah's Ark Lab
 
-### [[Paper]](https://arxiv.org/pdf/1911.13175)  [[Supplementary]](http://www.seanjmoran.com/pdfs/CURL_supplementary.pdf) [[Video]](http://www.seanjmoran.com/pdfs/CURL_supplementary.pdf) [[Poster]](http://www.seanjmoran.com/pdfs/CURL_supplementary.pdf) [[Slides]](http://www.seanjmoran.com/pdfs/CURL_supplementary.pdf) 
+### [[Paper]](https://arxiv.org/pdf/1911.13175)  [[Supplementary]](http://www.seanjmoran.com/pdfs/CURL_supplementary.pdf) [[Video]](https://youtu.be/66FnRfDR_Oo) [[Poster]](http://www.seanjmoran.com/pdfs/CURL_supplementary.pdf) [[Slides]](http://www.seanjmoran.com/pdfs/CURL_supplementary.pdf) 
 
 <p align="center">
 <img src="./images/teaser.PNG" width="80%"/>
