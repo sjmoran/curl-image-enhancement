@@ -12,13 +12,59 @@ Huawei Noah's Ark Lab
 Repository links for the paper CURL: Neural Curve Layers for Global Image Enhancement. Here you will find a link to the code and information of the datasets. Please raise a Github issue if you need assistance of have any questions on the research. 
 <p></p>
 
+### Requirements
+
+_requirements.txt_ contains the Python packages used by the code.
+
+### How to train CURL and use the model for inference
+
+#### Training CURL
+
+Instructions:
+
+To get this code working on your system / problem you will need to edit the data loading functions, as follows:
+
+1. main.py, change the paths for the data directories to point to your data directory
+2. data.py, lines 248, 256, change the folder names of the data input and output directories to point to your folder names
+
+To train, run the command:
+
+```
+python3 main.py
+```
+
+<p align="center">
+<img src="./images/curl_training_loss.png" width="80%"/>
+</p>
+
+#### Inference - Using Pre-trained Models for Prediction
+
+The directory _pretrained_models_ contains a set of four DeepLPF pre-trained models on the Adobe5K_DPE dataset, each model output from different epochs. The model with the highest validation dataset PSNR (24.40 dB) is at epoch 99:
+
+* deeplpf_validpsnr_24.40217225909678_validloss_0.02979421615600586_testpsnr_24.86015350359045_testloss_0.027900682762265205_epoch_99_model.pt
+
+To use this model for inference:
+
+1. Place the images you wish to infer in a directory e.g. ./adobe5k_dpe/deeplpf_example_test_input/. Make sure the directory path has the word "input" somewhere in the path.
+2. Place the images you wish to use as groundtruth in a directory e.g. ./adobe5k_dpe/deeplpf_example_test_output/. Make sure the directory path has the word "output" somewhere in the path.
+3. Place the names of the images (without extension) in a text file in the directory above the directory containing the images i.e. ./adobe5k_dpe/ e.g. ./adobe5k_dpe/images_inference.txt
+4. Run the command and the results will appear in a timestamped directory in the same directory as main.py:
+
+```
+python3 main.py --inference_img_dirpath=./adobe5k_dpe/ --checkpoint_filepath=./pretrained_models/deeplpf_validpsnr_24.40217225909678_validloss_0.02979421615600586_testpsnr_24.86015350359045_testloss_0.027900682762265205_epoch_99_model.pt
+```
+
 ### CURL for RGB images
 
-- __CURL_for_RGB_images.zip__ contains the TED model for RGB images - courtsey of Github user [hermosayhl](https://github.com/hermosayhl)
+- __rgb_ted.py__ contains the TED model for RGB images 
 
-### Pretrained models weights
+### CURL for RAW images
 
-- __CURL_for_RGB_images.zip__ contains pre-trained weights for RGB images - courtsey of Github user [hermosayhl](https://github.com/hermosayhl)
+- __raw_ted.py__ contains the TED model for RGB images 
+
+### Github user contributions
+
+__CURL_for_RGB_images.zip__ is a contribution (RGB model and pre-trained weights) courtsey of Github user [hermosayhl](https://github.com/hermosayhl)
 
 ### Bibtex
 
@@ -66,8 +112,7 @@ If you do use ideas from the paper in your research please kindly consider citin
     * S7-ISP-Dataset-20161110_130117
     * S7-ISP-Dataset-20161109_134017
 
-
-**8th February 2021:  Contact Sean Moran if you wish to download the Adobe5K pre-processed dataset (i.e. Adobe-DPE) according to the pre-processing procedure outline in the DeepPhotoEnhancer paper.**
+* Contact [Sean Moran](mailto:sean.j.moran@gmail.com) if you wish to download the Adobe5K pre-processed dataset (i.e. Adobe-DPE) according to the pre-processing procedure outline in the DeepPhotoEnhancer paper.
 
 * __Adobe-DPE__ (5000 images, RGB, RGB pairs): this dataset can be downloaded [here](https://data.csail.mit.edu/graphics/fivek/). After downloading this dataset you will need to use Lightroom to pre-process the images according to the procedure outlined in the DeepPhotoEnhancer (DPE) [paper](https://github.com/nothinglo/Deep-Photo-Enhancer). Please see the issue [here](https://github.com/nothinglo/Deep-Photo-Enhancer/issues/38#issuecomment-449786636) for instructions. Artist C retouching is used as the groundtruth/target. Feel free to raise a Gitlab issue if you need assistance with this (or indeed the Adobe-UPE dataset below). You can also find the training, validation and testing dataset splits for Adobe-DPE in the following [file](https://www.cmlab.csie.ntu.edu.tw/project/Deep-Photo-Enhancer/%5BExperimental_Code_Data%5D_Deep-Photo-Enhancer.zip). 
 
