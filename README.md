@@ -12,6 +12,10 @@ Huawei Noah's Ark Lab
 Repository links for the paper CURL: Neural Curve Layers for Global Image Enhancement. Here you will find a link to the code and information of the datasets. Please raise a Github issue if you need assistance of have any questions on the research. 
 <p></p>
 
+### Requirements
+
+_requirements.txt_ contains the Python packages used by the code.
+
 ### How to train CURL and use the model for inference
 
 #### Training CURL
