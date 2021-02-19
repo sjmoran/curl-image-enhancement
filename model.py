@@ -5,7 +5,7 @@ https://arxiv.org/pdf/1911.13175.pdf
 
 Please cite paper if you use this code.
 
-Tested with Pytorch 0.3.1, Python 3.5
+Tested with Pytorch 1.7.1, Python 3.7.9
 
 Authors: Sean Moran (sean.j.moran@gmail.com), 2020
 
@@ -14,7 +14,7 @@ import matplotlib
 matplotlib.use('agg')
 import os
 import glob
-from skimage.measure import compare_ssim as ssim
+from skimage.metrics import structural_similarity as ssim
 import os.path
 import torch.nn.functional as F
 from math import exp
@@ -46,20 +46,20 @@ import torch
 import time
 import random
 import skimage
-import ted
-from data import SamsungDataLoader, Dataset
+import rgb_ted
+from data import Adobe5kDataLoader, AdobeDataset
 from abc import ABCMeta, abstractmethod
 import imageio
 import cv2
+import sys
 from skimage.transform import resize
-print(torch.__version__)
-np.set_printoptions(threshold=np.nan)
+np.set_printoptions(threshold=sys.maxsize)
 
 
 class CURLLoss(nn.Module):
 
     def __init__(self, ssim_window_size=5, alpha=0.5):
-        """Initialisation of the CURL loss function
+        """Initialisation of the DeepLPF loss function
 
         :param ssim_window_size: size of averaging window for SSIM
         :param alpha: interpolation paramater for L1 and SSIM parts of the loss
@@ -148,6 +148,7 @@ class CURLLoss(nn.Module):
 
         return ssim_map.mean(), cs
 
+
     def compute_msssim(self, img1, img2):
         """Computes the multi scale structural similarity index between two images. This function is differentiable.
         Code adapted from: https://github.com/Po-Hsun-Su/pytorch-ssim/blob/master/pytorch_ssim/__init__.py
@@ -158,46 +159,45 @@ class CURLLoss(nn.Module):
         :rtype: float
 
         """
-        if img1.size() != img2.size():
-            raise RuntimeError('Input images must have the same shape (%s vs. %s).' % (
-                img1.size(), img2.size()))
-        if len(img1.size()) != 4:
-            raise RuntimeError(
-                'Input images must have four dimensions, not %d' % len(img1.size()))
+        if img1.shape[2]!=img2.shape[2]:
+                img1=img1.transpose(2,3)
 
-        if type(img1) is not Variable or type(img2) is not Variable:
-            raise RuntimeError(
-                'Input images must be Variables, not %s' % img1.__class__.__name__)
+        if img1.shape != img2.shape:
+            raise RuntimeError('Input images must have the same shape (%s vs. %s).',
+                       img1.shape, img2.shape)
+        if img1.ndim != 4:
+            raise RuntimeError('Input images must have four dimensions, not %d',
+                       img1.ndim)
 
-        weights = Variable(torch.FloatTensor(
-            [0.0448, 0.2856, 0.3001, 0.2363, 0.1333]))
-        # weights = Variable(torch.FloatTensor([1.0, 1.0, 1.0, 1.0, 1.0]))
-        if img1.is_cuda:
-            weights = weights.cuda(img1.get_device())
-
+        device = img1.device
+        weights = torch.FloatTensor([0.0448, 0.2856, 0.3001, 0.2363, 0.1333]).to(device)
         levels = weights.size()[0]
-        mssim = []
+        ssims = []
         mcs = []
         for _ in range(levels):
-            sim, cs = self.compute_ssim(img1, img2)
-            mssim.append(sim)
+            ssim, cs = self.compute_ssim(img1, img2)
+
+            # Relu normalize (not compliant with original definition)
+            ssims.append(ssim)
             mcs.append(cs)
 
             img1 = F.avg_pool2d(img1, (2, 2))
             img2 = F.avg_pool2d(img2, (2, 2))
 
-        img1 = img1.contiguous()
-        img2 = img2.contiguous()
+        ssims = torch.stack(ssims)
+        mcs = torch.stack(mcs)
 
-        mssim = torch.cat(mssim)
-        mcs = torch.cat(mcs)
-
-        mssim = (mssim + 1) / 2
+        # Simple normalize (not compliant with original definition)
+        # TODO: remove support for normalize == True (kept for backward support)
+        ssims = (ssims + 1) / 2
         mcs = (mcs + 1) / 2
 
-        prod = (torch.prod(mcs[0:levels - 1] ** weights[0:levels - 1])
-                * (mssim[levels - 1] ** weights[levels - 1]))
-        return prod
+        pow1 = mcs ** weights
+        pow2 = ssims ** weights
+
+        # From Matlab implementation https://ece.uwaterloo.ca/~z70wang/research/iwssim/
+        output = torch.prod(pow1[:-1] * pow2[-1])
+        return output
 
     def forward(self, predicted_img_batch, target_img_batch, gradient_regulariser):
         """Forward function for the CURL loss
@@ -230,14 +230,12 @@ class CURLLoss(nn.Module):
             torch.cuda.FloatTensor(torch.zeros(1, 1).cuda()))
         hsv_loss_value = Variable(
             torch.cuda.FloatTensor(torch.zeros(1, 1).cuda()))
-        deep_isp_loss = Variable(
-            torch.cuda.FloatTensor(torch.zeros(1, 1).cuda()))
         rgb_loss_value = Variable(
             torch.cuda.FloatTensor(torch.zeros(1, 1).cuda()))
 
         for i in range(0, num_images):
 
-            target_img = target_img_batch[i, :, :, :].permute(2, 0, 1).cuda()
+            target_img = target_img_batch[i, :, :, :].cuda()
             predicted_img = predicted_img_batch[i, :, :, :].cuda()
 
             predicted_img_lab = torch.clamp(
@@ -246,7 +244,7 @@ class CURLLoss(nn.Module):
                 ImageProcessing.rgb_to_lab(target_img.squeeze(0)), 0, 1)
 
             target_img_hsv = torch.clamp(ImageProcessing.rgb_to_hsv(
-                target_img.squeeze(0)), 0, 1)
+                target_img), 0, 1)
             predicted_img_hsv = torch.clamp(ImageProcessing.rgb_to_hsv(
                 predicted_img.squeeze(0)), 0, 1)
 
@@ -572,7 +570,7 @@ class CURLNet(nn.Module):
 
         """
         super(CURLNet, self).__init__()
-        self.tednet = ted.TEDModel()
+        self.tednet = rgb_ted.TEDModel()
         self.curllayer = CURLLayer()
 
     def forward(self, img):
@@ -585,5 +583,4 @@ class CURLNet(nn.Module):
         """
         feat = self.tednet(img)
         img, gradient_regulariser = self.curllayer(feat)
-
         return img, gradient_regulariser

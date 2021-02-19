@@ -5,13 +5,13 @@ https://arxiv.org/pdf/1911.13175.pdf
 
 Please cite paper if you use this code.
 
-Tested with Pytorch 0.3.1, Python 3.5
+Tested with Pytorch 1.7.1, Python 3.7.9
 
 Authors: Sean Moran (sean.j.moran@gmail.com), 
 
 '''
 import os
-from skimage.measure import compare_ssim as ssim
+from skimage.metrics import structural_similarity as ssim
 import os.path
 import torch.nn.functional as F
 from skimage import io, color
@@ -41,15 +41,14 @@ import torch
 import time
 import random
 import skimage
-import ted
 from abc import ABCMeta, abstractmethod
 import imageio
 import cv2
 from skimage.transform import resize
 import matplotlib
+import sys
 matplotlib.use('agg')
-print(torch.__version__)
-np.set_printoptions(threshold=np.nan)
+np.set_printoptions(threshold=sys.maxsize)
 
 
 class ImageProcessing(object):
@@ -351,7 +350,7 @@ class ImageProcessing(object):
 
         """
         img=torch.clamp(img,0.000000001,1)       
-        
+
         img = img.permute(2, 1, 0)
         shape = img.shape
 
