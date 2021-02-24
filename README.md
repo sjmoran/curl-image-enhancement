@@ -39,9 +39,11 @@ python3 main.py
 
 #### Inference - Using Pre-trained Models for Prediction
 
-The directory _pretrained_models_ contains a set of four DeepLPF pre-trained models on the Adobe5K_DPE dataset, each model output from different epochs. The model with the highest validation dataset PSNR (24.40 dB) is at epoch 99:
+The directory _pretrained_models_ contains a set of four DeepLPF pre-trained models on the Adobe5K_DPE dataset, each model output from different epochs. The model with the highest validation dataset PSNR (23.46dB) is at epoch 99:
 
-* deeplpf_validpsnr_24.40217225909678_validloss_0.02979421615600586_testpsnr_24.86015350359045_testloss_0.027900682762265205_epoch_99_model.pt
+* curl_validpsnr_23.45627680277279_validloss_0.02825431153178215_testpsnr_23.929761817622282_testloss_0.026055289432406425_epoch_99_model.pt
+
+This pre-trained CURL model obtains 23.93dB and 0.908 SSIM on the test dataset for Adobe DPE.
 
 To use this model for inference:
 
@@ -51,7 +53,7 @@ To use this model for inference:
 4. Run the command and the results will appear in a timestamped directory in the same directory as main.py:
 
 ```
-python3 main.py --inference_img_dirpath=./adobe5k_dpe/ --checkpoint_filepath=./pretrained_models/deeplpf_validpsnr_24.40217225909678_validloss_0.02979421615600586_testpsnr_24.86015350359045_testloss_0.027900682762265205_epoch_99_model.pt
+python3 main.py --inference_img_dirpath=./adobe5k_dpe/ --checkpoint_filepath=./pretrained_models/curl_validpsnr_23.45627680277279_validloss_0.02825431153178215_testpsnr_23.929761817622282_testloss_0.026055289432406425_epoch_99_model.pt 
 ```
 
 ### CURL for RGB images
