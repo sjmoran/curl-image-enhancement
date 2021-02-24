@@ -176,17 +176,17 @@ def main():
                                                  img_ids_filepath=training_img_dirpath+"/images_train.txt")
         training_data_dict = training_data_loader.load_data()
 
-        training_dataset = AdobeDataset(data_dict=training_data_dict, normaliser=1, is_valid=False)
+        training_dataset = Dataset(data_dict=training_data_dict, normaliser=1, is_valid=False)
 
         validation_data_loader = Adobe5kDataLoader(data_dirpath=training_img_dirpath,
                                                img_ids_filepath=training_img_dirpath+"/images_valid.txt")
         validation_data_dict = validation_data_loader.load_data()
-        validation_dataset = AdobeDataset(data_dict=validation_data_dict, normaliser=1, is_valid=True)
+        validation_dataset = Dataset(data_dict=validation_data_dict, normaliser=1, is_valid=True)
 
         testing_data_loader = Adobe5kDataLoader(data_dirpath=training_img_dirpath,
                                             img_ids_filepath=training_img_dirpath+"/images_test.txt")
         testing_data_dict = testing_data_loader.load_data()
-        testing_dataset = AdobeDataset(data_dict=testing_data_dict, normaliser=1,is_valid=True)
+        testing_dataset = Dataset(data_dict=testing_data_dict, normaliser=1,is_valid=True)
 
         training_data_loader = torch.utils.data.DataLoader(training_dataset, batch_size=1, shuffle=True,
                                                        num_workers=10)
