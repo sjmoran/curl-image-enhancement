@@ -43,7 +43,7 @@ from skimage.transform import resize
 import cv2
 import imageio
 from abc import ABCMeta, abstractmethod
-from data import Adobe5kDataLoader, AdobeDataset
+from data import Adobe5kDataLoader, Dataset
 import skimage
 import random
 import time
@@ -75,6 +75,7 @@ from skimage import io, color
 from math import exp
 import torch.nn.functional as F
 import os.path
+from data import Adobe5kDataLoader, Dataset
 from skimage.metrics import structural_similarity as ssim
 import glob
 import os
@@ -158,11 +159,11 @@ def main():
         logging.info(
             "Performing inference with images in directory: " + inference_img_dirpath)
 
-        net = model.DeepLPFNet()
-        net.load_state_dict(torch.load(checkpoint_filepath))
+        net = model.CURLNet()
+        net=torch.load(checkpoint_filepath)
         net.eval()
 
-        criterion = model.DeepLPFLoss()
+        criterion = model.CURLLoss()
 
         inference_evaluator = metric.Evaluator(
             criterion, inference_data_loader, "test", log_dirpath)

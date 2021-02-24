@@ -47,7 +47,7 @@ import time
 import random
 import skimage
 import rgb_ted
-from data import Adobe5kDataLoader, AdobeDataset
+from data import Adobe5kDataLoader, Dataset
 from abc import ABCMeta, abstractmethod
 import imageio
 import cv2

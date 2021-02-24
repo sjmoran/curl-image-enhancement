@@ -111,7 +111,7 @@ class SamsungDataset(torch.utils.data.Dataset):
                 return {'input_img': input_img, 'output_img': output_img,
                         'name': self.data_dict[idx]['input_img'].split("/")[-1]}
 
-class AdobeDataset(torch.utils.data.Dataset):
+class Dataset(torch.utils.data.Dataset):
 
     def __init__(self, data_dict, transform=None, normaliser=2 ** 8 - 1, is_valid=False, is_inference=False):
         """Initialisation for the Dataset object

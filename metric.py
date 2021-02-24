@@ -16,7 +16,7 @@ from skimage.transform import resize
 import cv2
 import imageio
 from abc import ABCMeta, abstractmethod
-from data import Adobe5kDataLoader, AdobeDataset
+from data import Adobe5kDataLoader, Dataset
 import skimage
 import random
 import time
