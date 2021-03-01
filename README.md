@@ -39,7 +39,7 @@ python3 main.py
 
 #### Inference - Using Pre-trained Models for Prediction
 
-The directory _pretrained_models_ contains a set of four DeepLPF pre-trained models on the Adobe5K_DPE dataset, each model output from different epochs. The model with the highest validation dataset PSNR (23.46dB) is at epoch 99:
+The directory _pretrained_models_ contains a set of four CURL pre-trained models on the Adobe5K_DPE dataset, each model output from different epochs. The model with the highest validation dataset PSNR (23.46dB) is at epoch 99:
 
 * curl_validpsnr_23.45627680277279_validloss_0.02825431153178215_testpsnr_23.929761817622282_testloss_0.026055289432406425_epoch_99_model.pt
 
@@ -47,8 +47,8 @@ This pre-trained CURL model obtains 23.93dB and 0.908 SSIM on the test dataset f
 
 To use this model for inference:
 
-1. Place the images you wish to infer in a directory e.g. ./adobe5k_dpe/deeplpf_example_test_input/. Make sure the directory path has the word "input" somewhere in the path.
-2. Place the images you wish to use as groundtruth in a directory e.g. ./adobe5k_dpe/deeplpf_example_test_output/. Make sure the directory path has the word "output" somewhere in the path.
+1. Place the images you wish to infer in a directory e.g. ./adobe5k_dpe/curl_example_test_input/. Make sure the directory path has the word "input" somewhere in the path.
+2. Place the images you wish to use as groundtruth in a directory e.g. ./adobe5k_dpe/curl_example_test_output/. Make sure the directory path has the word "output" somewhere in the path.
 3. Place the names of the images (without extension) in a text file in the directory above the directory containing the images i.e. ./adobe5k_dpe/ e.g. ./adobe5k_dpe/images_inference.txt
 4. Run the command and the results will appear in a timestamped directory in the same directory as main.py:
 
