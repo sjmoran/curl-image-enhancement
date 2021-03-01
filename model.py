@@ -273,13 +273,13 @@ class CURLLoss(nn.Module):
             target_img_2 = target_img_val * \
                 target_img_sat*torch.sin(target_img_hue)
 
-            p = torch.stack(
+            predicted_img_hsv = torch.stack(
                 (predicted_img_1, predicted_img_2, predicted_img_val), 2)
-            d = torch.stack((target_img_1, target_img_2, target_img_val), 2)
+            target_img_hsv = torch.stack((target_img_1, target_img_2, target_img_val), 2)
 
             l1_loss_value += F.l1_loss(predicted_img_lab, target_img_lab)
             rgb_loss_value += F.l1_loss(predicted_img, target_img)
-            hsv_loss_value += F.l1_loss(p, d)
+            hsv_loss_value += F.l1_loss(predicted_img_hsv, target_img_hsv)
 
             cosine_rgb_loss_value += (1-torch.mean(
                 torch.nn.functional.cosine_similarity(predicted_img, target_img, dim=0)))

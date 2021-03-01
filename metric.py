@@ -161,6 +161,7 @@ class Evaluator():
                         continue
                     else:
 
+                        print(net_output_img_example_rgb.shape)
                         output_img_example = (
                             output_img_batch_rgb[0, 0:3, :, :] * 255).astype('uint8')
                         net_output_img_example = (

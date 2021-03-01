@@ -21,6 +21,7 @@ from matplotlib.image import imread, imsave
 from scipy.ndimage.filters import convolve
 import torch.nn.init as net_init
 import datetime
+from PIL import Image
 import math
 import numpy as np
 import copy
@@ -212,8 +213,7 @@ class ImageProcessing(object):
         :rtype: multi-dimensional numpy array
 
         """
-        img = ImageProcessing.normalise_image(
-            imread(img_filepath), normaliser)  # NB: imread normalises to 0-1
+        img = ImageProcessing.normalise_image(np.array(Image.open(img_filepath)), normaliser)  # NB: imread normalises to 0-1
         return img
 
     @staticmethod

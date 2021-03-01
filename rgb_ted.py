@@ -71,9 +71,7 @@ class TED(nn.Module):
         self.dconv_up4 = LocalNet(128, 64)
         self.dconv_up3 = LocalNet(64, 32)
         self.dconv_up2 = LocalNet(32, 16)
-        self.dconv_up1 = LocalNet(32, 16)
-
-        self.conv_last = LocalNet(16, 3)
+        self.dconv_up1 = LocalNet(32, 3)
 
         self.conv_fuse1 = nn.Conv2d(208, 16, 1)
 
@@ -179,8 +177,7 @@ class TED(nn.Module):
 
         x = self.dconv_up1(x)
 
-        out = self.conv_last(x)
-        x = out+x_in_tile
+        out = x+x_in_tile
 
         return out
 
@@ -280,39 +277,6 @@ class MidNet4(nn.Module):
         self.conv2 = nn.Conv2d(64, 64, 3, 1, 4, 4)
         self.conv3 = nn.Conv2d(64, 64, 3, 1, 4, 4)
         self.conv4 = nn.Conv2d(64, 64, 3, 1, 4, 4)
-
-
-class SimpleUpsampler(nn.Sequential):
-
-    def __init__(self, scale):
-        """Pixelshuffle upsampling
-
-        :param scale: scale of upsampling
-        :returns: upsampled image
-        :rtype: Tensor
-
-        """
-        m = []
-        m.append(nn.PixelShuffle(scale))
-        super(SimpleUpsampler, self).__init__(*m)
-
-
-def DownSamplingShuffle(x):
-    """Pixelshuffle downsample
-
-    :param x: RAW image 
-    :returns: RAW image shuffled to 4 channels
-    :rtype: Tensor
-
-    """
-    [N, C, W, H] = x.shape
-    x1 = x[:, :, 0:W:2, 0:H:2]
-    x2 = x[:, :, 0:W:2, 1:H:2]
-    x3 = x[:, :, 1:W:2, 0:H:2]
-    x4 = x[:, :, 1:W:2, 1:H:2]
-
-    return torch.cat((x1, x2, x3, x4), 1)
-
 
 # Model definition
 class TEDModel(nn.Module):

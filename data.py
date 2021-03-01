@@ -184,7 +184,7 @@ class Dataset(torch.utils.data.Dataset):
 
                 input_img = TF.to_pil_image(input_img)
                 output_img = TF.to_pil_image(output_img)
-
+                
                 if not self.is_valid:
 
                     if random.random()>0.5:
@@ -200,10 +200,11 @@ class Dataset(torch.utils.data.Dataset):
                             output_img = TF.vflip(output_img)
 
                 # Transform to tensor
+                #print(output_img.shape)
+                #plt.imsave("./"+self.data_dict[idx]['input_img'].split("/")[-1]+".png", output_img,format='png')
                 input_img = TF.to_tensor(input_img)
                 output_img = TF.to_tensor(output_img)
-
-
+                
                 return {'input_img': input_img, 'output_img': output_img,
                         'name': self.data_dict[idx]['input_img'].split("/")[-1]}
 

@@ -189,12 +189,12 @@ def main():
         testing_dataset = Dataset(data_dict=testing_data_dict, normaliser=1,is_valid=True)
 
         training_data_loader = torch.utils.data.DataLoader(training_dataset, batch_size=1, shuffle=True,
-                                                       num_workers=10)
+                                                       num_workers=5)
         testing_data_loader = torch.utils.data.DataLoader(testing_dataset, batch_size=1, shuffle=False,
-                                                      num_workers=10)
+                                                      num_workers=5)
         validation_data_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=1,
                                                          shuffle=False,
-                                                         num_workers=10)
+                                                         num_workers=5)
         net = model.CURLNet()
 
         logging.info('######### Network created #########')
@@ -271,6 +271,7 @@ def main():
             writer.add_scalar('Loss/train_smooth', running_loss / examples, epoch + 1)
 
             # Valid loss
+            '''
             examples = 0.0
             running_loss = 0.0
 
@@ -306,7 +307,7 @@ def main():
             writer.add_scalar('Loss/valid_smooth', running_loss / examples, epoch + 1)
 
             net.train()
-
+            '''
             if (epoch + 1) % valid_every == 0:
 
                 logging.info("Evaluating model on validation dataset")
