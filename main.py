@@ -21,7 +21,7 @@ directory
 that list the training, validation and test images, one per line of each
 txt file
 
-3. data.py, lines 223, 240, 423, 431 change the folder names of the data input and
+3. data.py, lines 307, 314, 400, 417 change the folder names of the data input and
 output directories to point to your folder names. 
 
 We used the Samsung S7 and the Adobe datasets in the paper. They can be 
