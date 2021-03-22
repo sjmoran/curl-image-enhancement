@@ -2,10 +2,11 @@
 
 [Sean Moran](http://www.seanjmoran.com),  Steven McDonagh, [Greg Slabaugh](http://gregslabaugh.net/)
 
-Repository links for the paper CURL: Neural Curve Layers for Global Image Enhancement. Here you will find a link to the code and information of the datasets. Please raise a Github issue if you need assistance of have any questions on the research. 
-<p></p>
-
 **Huawei Noah's Ark Lab**
+
+<p>
+Repository links for the paper CURL: Neural Curve Layers for Global Image Enhancement. Here you will find a link to the code and information of the datasets. Please raise a Github issue if you need assistance of have any questions on the research. 
+</p>
 
 ### [[Paper]](https://arxiv.org/pdf/1911.13175)  [[Supplementary]](https://sjmoran.github.io/pdfs/CURL_supplementary.pdf) [[Video]](https://youtu.be/66FnRfDR_Oo) [[Poster]](https://sjmoran.github.io/pdfs/CURL_ICPR_POSTER.pdf) [[Slides]](https://sjmoran.github.io/pdfs/DeepLPFDataBites.pdf) 
 
