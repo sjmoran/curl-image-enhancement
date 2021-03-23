@@ -50,7 +50,7 @@ python3 main.py
 
 #### Inference - Using Pre-trained Models for Prediction
 
-The directory _pretrained_models_ contains a set of four CURL pre-trained models on the Adobe5K_DPE dataset, each model output from different epochs. The model with the highest validation dataset PSNR (23.46dB) is at epoch 99:
+The directory _pretrained_models_ contains a CURL pre-trained model on the Adobe5K_DPE dataset. The model with the highest validation dataset PSNR (23.46dB) is at epoch 99:
 
 * curl_validpsnr_23.45627680277279_validloss_0.02825431153178215_testpsnr_23.929761817622282_testloss_0.026055289432406425_epoch_99_model.pt
 
