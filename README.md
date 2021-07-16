@@ -46,7 +46,7 @@
   </tr>
   <tr>
     <td><img src="https://github.com/sjmoran/DeepLPF/blob/ff2a4a6ac30a247f10c5ee2ebb96d1982725570b/adobe5k_dpe/deeplpf_example_test_input/a4742-Duggan_090331_6517_input.png"/></td>     
-     <td><img src=""/></td>     
+     <td><img src="https://github.com/sjmoran/CURL/blob/efd78c6a4057da589174d72d2d2d7fca8c2ea730/adobe5k_dpe/curl_example_test_output/a4742-Duggan_090331_6517_output.png"/></td>     
      <td><img src=""/></td> 
   </tr>
   <tr>
