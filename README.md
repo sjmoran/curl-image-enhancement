@@ -55,8 +55,9 @@
     <th>Ours (CURL)</th>
   </tr>
   <tr>
-    <td><img src=""/></td>   
-     <td><img src=""/></td>     <td><img src=""/></td> 
+    <td><img src="https://github.com/sjmoran/DeepLPF/blob/3247d4dedce32aeaad54586d2c0b478189ed8d82/adobe5k_dpe/deeplpf_example_test_input/a4774-_DGW0330.png"/></td>   
+     <td><img src="https://github.com/sjmoran/DeepLPF/blob/28d9bfad7bf3649b25aa6c69dd25226474fd8339/adobe5k_dpe/deeplpf_example_test_output/a4774-_DGW0330_gt.png"/></td>     
+     <td><img src="https://github.com/sjmoran/CURL/blob/15824105386c0633f1fc2a3846e42f0c339f90b3/adobe5k_dpe/curl_example_test_inference/a4774-_DGW0330_TEST_1_7_PSNR_21.083_SSIM_0.896.jpg"/></td> 
   </tr>
 </table>
 
