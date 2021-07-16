@@ -45,7 +45,7 @@
     <th>Ours (CURL)</th>
   </tr>
   <tr>
-    <td><img src=""/></td>     
+    <td><img src="https://github.com/sjmoran/DeepLPF/blob/ff2a4a6ac30a247f10c5ee2ebb96d1982725570b/adobe5k_dpe/deeplpf_example_test_input/a4742-Duggan_090331_6517_input.png"/></td>     
      <td><img src=""/></td>     
      <td><img src=""/></td> 
   </tr>
