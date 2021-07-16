@@ -254,7 +254,7 @@ class CURLLoss(nn.Module):
         hsv_loss_value = hsv_loss_value/num_images
 
         curl_loss = (rgb_loss_value + cosine_rgb_loss_value + l1_loss_value +
-                     hsv_loss_value + ssim_loss_value + 1e-6*gradient_regulariser)/6
+                     hsv_loss_value + 10*ssim_loss_value + 1e-6*gradient_regulariser)/6
 
         return curl_loss
 
