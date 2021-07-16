@@ -25,9 +25,9 @@
 
 <table>
   <tr>
-      <td><img src=""/></td>     
-     <td><img src=""/></td> 
-    <td><img src=""/></td> 
+      <td><img src="https://github.com/sjmoran/CURL/blob/7cd57a29b4b86cfe9570276b38581660a56e8ab0/adobe5k_dpe/curl_example_test_input/a4576-DSC_0217_input.png"/></td>     
+     <td><img src="https://github.com/sjmoran/CURL/blob/bca9da454f68e340a724da6b80fa29ffe0db0d14/adobe5k_dpe/curl_example_test_output/a4576-DSC_0217_gt.png"/></td> 
+    <td><img src="https://github.com/sjmoran/CURL/blob/113448486eb3de6facc4b8655f08ed66a89735f4/adobe5k_dpe/curl_example_test_inference/a4576-DSC_0217_TEST_1_9_PSNR_31.759_SSIM_0.976.jpg"/></td> 
   </tr>
   <tr>
     <th>Input</th>
@@ -35,9 +35,9 @@
     <th>Ours (CURL)</th>
   </tr>
   <tr>
-      <td><img src=""/></td>     
-     <td><img src=""/></td> 
-    <td><img src=""/></td> 
+      <td><img src="https://github.com/sjmoran/DeepLPF/blob/7b6ffc8d37d26a29742c0487e94c2e00617ab149/adobe5k_dpe/deeplpf_example_test_input/a4582-DSC_0343_input.png"/></td>     
+     <td><img src="https://github.com/sjmoran/CURL/blob/3f2b9ad10ad5658cbf71ea02928262b9aa0c6c45/adobe5k_dpe/curl_example_test_output/a4582-DSC_0343_gt.png"/></td> 
+    <td><img src="https://github.com/sjmoran/CURL/blob/30bd85a06b5fd600993c2b6285dacb20d77f8a5b/adobe5k_dpe/curl_example_test_inference/a4582-DSC_0343_TEST_1_10_PSNR_18.659_SSIM_0.901.jpg"/></td> 
   </tr>
   <tr>
     <th>Input</th>
@@ -45,9 +45,9 @@
     <th>Ours (CURL)</th>
   </tr>
   <tr>
-    <td><img src=""/></td>     
-     <td><img src=""/></td>     
-     <td><img src=""/></td> 
+    <td><img src="https://github.com/sjmoran/DeepLPF/blob/ff2a4a6ac30a247f10c5ee2ebb96d1982725570b/adobe5k_dpe/deeplpf_example_test_input/a4742-Duggan_090331_6517_input.png"/></td>     
+     <td><img src="https://github.com/sjmoran/CURL/blob/efd78c6a4057da589174d72d2d2d7fca8c2ea730/adobe5k_dpe/curl_example_test_output/a4742-Duggan_090331_6517_output.png"/></td>     
+     <td><img src="https://github.com/sjmoran/CURL/blob/38848086135f152a90cef749c2e8825e6a327bc0/adobe5k_dpe/curl_example_test_inference/a4742-Duggan_090331_6517_TEST_1_1_PSNR_22.079_SSIM_0.969.jpg"/></td> 
   </tr>
   <tr>
     <th>Input</th> 
@@ -55,8 +55,9 @@
     <th>Ours (CURL)</th>
   </tr>
   <tr>
-    <td><img src=""/></td>   
-     <td><img src=""/></td>     <td><img src=""/></td> 
+    <td><img src="https://github.com/sjmoran/DeepLPF/blob/3247d4dedce32aeaad54586d2c0b478189ed8d82/adobe5k_dpe/deeplpf_example_test_input/a4774-_DGW0330.png"/></td>   
+     <td><img src="https://github.com/sjmoran/DeepLPF/blob/28d9bfad7bf3649b25aa6c69dd25226474fd8339/adobe5k_dpe/deeplpf_example_test_output/a4774-_DGW0330_gt.png"/></td>     
+     <td><img src="https://github.com/sjmoran/CURL/blob/15824105386c0633f1fc2a3846e42f0c339f90b3/adobe5k_dpe/curl_example_test_inference/a4774-_DGW0330_TEST_1_7_PSNR_21.083_SSIM_0.896.jpg"/></td> 
   </tr>
 </table>
 
