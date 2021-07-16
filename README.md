@@ -36,7 +36,7 @@
   </tr>
   <tr>
       <td><img src="https://github.com/sjmoran/DeepLPF/blob/7b6ffc8d37d26a29742c0487e94c2e00617ab149/adobe5k_dpe/deeplpf_example_test_input/a4582-DSC_0343_input.png"/></td>     
-     <td><img src=""/></td> 
+     <td><img src="https://github.com/sjmoran/CURL/blob/3f2b9ad10ad5658cbf71ea02928262b9aa0c6c45/adobe5k_dpe/curl_example_test_output/a4582-DSC_0343_gt.png"/></td> 
     <td><img src=""/></td> 
   </tr>
   <tr>
