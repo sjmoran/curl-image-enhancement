@@ -88,11 +88,11 @@ python3 main.py
 
 #### Inference - Using Pre-trained Models for Prediction
 
-The directory _pretrained_models_ contains a CURL pre-trained model on the Adobe5K_DPE dataset. The model with the highest validation dataset PSNR (23.40dB) is at epoch 124:
+The directory _pretrained_models_ contains a CURL pre-trained model on the Adobe5K_DPE dataset. The model with the highest validation dataset PSNR (23.56dB) is at epoch 460:
 
-* curl_validpsnr_22.66_validloss_0.0734_testpsnr_23.40_testloss_0.0605_epoch_124_model.pt
+* curl_validpsnr_23.058601132808413_validloss_0.07019611448049545_testpsnr_23.566514725165025_testloss_0.060922592878341675_epoch_460_model.pt
 
-This pre-trained CURL model obtains 23.40dB on the test dataset for Adobe DPE.
+This pre-trained CURL model obtains 23.57dB on the test dataset for Adobe DPE.
 
 To use this model for inference:
 
@@ -102,7 +102,7 @@ To use this model for inference:
 4. Run the command and the results will appear in a timestamped directory in the same directory as main.py:
 
 ```
-python3 main.py --inference_img_dirpath=./adobe5k_dpe/ --checkpoint_filepath=./pretrained_models/curl_validpsnr_22.66_validloss_0.0734_testpsnr_23.40_testloss_0.0605_epoch_124_model.pt
+python3 main.py --inference_img_dirpath=./adobe5k_dpe/ --checkpoint_filepath=./pretrained_models/curl_validpsnr_23.058601132808413_validloss_0.07019611448049545_testpsnr_23.566514725165025_testloss_0.060922592878341675_epoch_460_model.pt
 ```
 
 ### CURL for RGB images
