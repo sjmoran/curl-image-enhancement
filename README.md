@@ -25,7 +25,7 @@
 
 <table>
   <tr>
-      <td><img src="https://github.com/sjmoran/CURL/blob/7cd57a29b4b86cfe9570276b38581660a56e8ab0/adobe5k_dpe/curl_example_test_input/a4576-DSC_0217_input.png"/></td>     
+      <td><img src="https://github.com/sjmoran/CURL/blob/877d67ed4cf706fc8408630003e740c1078c3475/adobe5k_dpe/curl_example_test_input/a3102-JI2E4053%202.png"/></td>     
      <td><img src="https://github.com/sjmoran/CURL/blob/bca9da454f68e340a724da6b80fa29ffe0db0d14/adobe5k_dpe/curl_example_test_output/a4576-DSC_0217_gt.png"/></td> 
     <td><img src="https://github.com/sjmoran/CURL/blob/113448486eb3de6facc4b8655f08ed66a89735f4/adobe5k_dpe/curl_example_test_inference/a4576-DSC_0217_TEST_1_9_PSNR_31.759_SSIM_0.976.jpg"/></td> 
   </tr>
