@@ -27,7 +27,7 @@
   <tr>
       <td><img src="https://github.com/sjmoran/CURL/blob/877d67ed4cf706fc8408630003e740c1078c3475/adobe5k_dpe/curl_example_test_input/a3102-JI2E4053%202.png"/></td>     
      <td><img src="https://github.com/sjmoran/CURL/blob/2937522378a81c7f9a2e5ad20ddbe966820bb6c2/adobe5k_dpe/curl_example_test_output/a3102-JI2E4053.png"/></td> 
-    <td><img src="https://github.com/sjmoran/CURL/blob/113448486eb3de6facc4b8655f08ed66a89735f4/adobe5k_dpe/curl_example_test_inference/a4576-DSC_0217_TEST_1_9_PSNR_31.759_SSIM_0.976.jpg"/></td> 
+    <td><img src="https://github.com/sjmoran/CURL/blob/6a7ffde24c38a3ae0a65dd0603bf7fcef9019dd3/adobe5k_dpe/curl_example_test_inference/a3102-JI2E4053_VALID_460_29_PSNR_21.413_SSIM_0.902.jpg"/></td> 
   </tr>
   <tr>
     <th>Input</th>
