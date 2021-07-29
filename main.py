@@ -77,7 +77,7 @@ def main():
         "--num_epoch", type=int, required=False, help="Number of epoches (default 5000)", default=100000)
     parser.add_argument(
         "--valid_every", type=int, required=False, help="Number of epoches after which to compute validation accuracy",
-        default=25)
+        default=10)
     parser.add_argument(
         "--checkpoint_filepath", required=False, help="Location of checkpoint file", default=None)
     parser.add_argument(
@@ -159,13 +159,15 @@ def main():
         testing_dataset = Dataset(data_dict=testing_data_dict, normaliser=1,is_valid=True)
 
         training_data_loader = torch.utils.data.DataLoader(training_dataset, batch_size=1, shuffle=True,
-                                                       num_workers=8)
+                                                       num_workers=6)
         testing_data_loader = torch.utils.data.DataLoader(testing_dataset, batch_size=1, shuffle=False,
-                                                      num_workers=8)
+                                                      num_workers=6)
         validation_data_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=1,
                                                          shuffle=False,
-                                                         num_workers=8)
+                                                         num_workers=6)
+   
         net = model.CURLNet()
+        net.cuda()
 
         logging.info('######### Network created #########')
         logging.info('Architecture:\n' + str(net))
@@ -184,7 +186,22 @@ def main():
         testing_evaluator = metric.Evaluator(
             criterion, testing_data_loader, "test", log_dirpath)
 
-        optimizer = optim.Adam(filter(lambda p: p.requires_grad,
+    
+        start_epoch=0
+
+        if (checkpoint_filepath is not None):
+            logging.info('######### Loading Checkpoint #########')
+            checkpoint = torch.load(checkpoint_filepath, map_location='cuda')
+            net.load_state_dict(checkpoint['model_state_dict'])
+            optimizer = optim.Adam(filter(lambda p: p.requires_grad,
+                                      net.parameters()), lr=1e-4, betas=(0.9, 0.999), eps=1e-08, weight_decay=1e-10)
+
+            optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+            start_epoch = checkpoint['epoch']
+            loss = checkpoint['loss']
+            net.cuda()
+        else:
+            optimizer = optim.Adam(filter(lambda p: p.requires_grad,
                                       net.parameters()), lr=1e-4, betas=(0.9, 0.999), eps=1e-08, weight_decay=1e-10)
 
         best_valid_psnr = 0.0
@@ -199,9 +216,8 @@ def main():
         ssim_avg = 0.0
         batch_size = 1
         total_examples = 0
-        net.cuda()
 
-        for epoch in range(num_epoch):
+        for epoch in range(start_epoch,num_epoch):
 
             # train loss
             examples = 0.0
@@ -234,7 +250,7 @@ def main():
                 total_examples+=batch_size
 
                 writer.add_scalar('Loss/train', loss.data[0], total_examples)
-                
+
             logging.info('[%d] train loss: %.15f' %
                          (epoch + 1, running_loss / examples))
             writer.add_scalar('Loss/train_smooth', running_loss / examples, epoch + 1)
@@ -303,20 +319,44 @@ def main():
                                                                                                                                         0],
                                                                                                                                     test_psnr, test_loss.tolist()[
                                                                                                                                         0],
-                                                                                                                                    epoch)
+                                                                                                                                    epoch +1)
+                    '''
                     torch.save(net, snapshot_path)
+                    '''
+
+                    torch.save({
+                        'epoch': epoch+1,
+                         'model_state_dict': net.state_dict(),
+                        'optimizer_state_dict': optimizer.state_dict(),
+                         'loss': loss,
+                         }, snapshot_path)
 
                 net.train()
 
         '''
         Run the network over the testing dataset split
         '''
-        testing_evaluator.evaluate(net, epoch)
+        snapshot_prefix = os.path.join(
+                        log_dirpath, 'curl')
 
+        valid_loss, valid_psnr, valid_ssim = validation_evaluator.evaluate(
+                    net, epoch)
+        test_loss, test_psnr, test_ssim = testing_evaluator.evaluate(
+                    net, epoch)
+
+        snapshot_path = snapshot_prefix + '_validpsnr_{}_validloss_{}_testpsnr_{}_testloss_{}_epoch_{}_model.pt'.format(valid_psnr,
+                                                                                                                                    valid_loss.tolist()[
+                                                                                                                                        0],
+                                                                                                                                    test_psnr, test_loss.tolist()[
+                                                                                                                                        0],
+                                                                                                                                    epoch +1)
         snapshot_prefix = os.path.join(log_dirpath, 'curl')
-        snapshot_path = snapshot_prefix + "_" + str(num_epoch)
-        torch.save(net.state_dict(), snapshot_path)
-
+        torch.save({
+                        'epoch': epoch+1,
+                         'model_state_dict': net.state_dict(),
+                        'optimizer_state_dict': optimizer.state_dict(),
+                         'loss': loss,
+                         }, snapshot_path)
 
 if __name__ == "__main__":
     main()
