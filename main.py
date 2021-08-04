@@ -130,7 +130,8 @@ def main():
             "Performing inference with images in directory: " + inference_img_dirpath)
 
         net = model.CURLNet()
-        net=torch.load(checkpoint_filepath)
+        checkpoint = torch.load(checkpoint_filepath, map_location='cuda')
+        net.load_state_dict(checkpoint['model_state_dict'])
         net.eval()
 
         criterion = model.CURLLoss()
@@ -189,7 +190,7 @@ def main():
     
         start_epoch=0
 
-        if (checkpoint_filepath is not None):
+        if (checkpoint_filepath is not None) and (inference_img_dirpath is None):
             logging.info('######### Loading Checkpoint #########')
             checkpoint = torch.load(checkpoint_filepath, map_location='cuda')
             net.load_state_dict(checkpoint['model_state_dict'])
@@ -197,6 +198,9 @@ def main():
                                       net.parameters()), lr=1e-4, betas=(0.9, 0.999), eps=1e-08, weight_decay=1e-10)
 
             optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+            for g in optimizer.param_groups:
+                g['lr'] = 1e-5
+
             start_epoch = checkpoint['epoch']
             loss = checkpoint['loss']
             net.cuda()
