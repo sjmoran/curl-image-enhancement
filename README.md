@@ -59,6 +59,11 @@
      <td><img src="https://github.com/sjmoran/CURL/blob/c58bdeeb948662419e1d15ccf4d11498b5a23379/adobe5k_dpe/curl_example_test_output/a4774-_DGW0330.png"/></td>     
      <td><img src="https://github.com/sjmoran/CURL/blob/c58bdeeb948662419e1d15ccf4d11498b5a23379/adobe5k_dpe/curl_example_test_inference/a4774-_DGW0330_TEST_510_31_PSNR_21.773_SSIM_0.899.jpg"/></td> 
   </tr>
+   <tr>
+    <td><img src="https://github.com/sjmoran/CURL/blob/2f885e1b779fa0924138355f80fd9f7b1d3e8f6e/adobe5k_dpe/curl_example_test_input/a4723-_DGW7894_input.png"/></td>   
+     <td><img src="https://github.com/sjmoran/CURL/blob/2f885e1b779fa0924138355f80fd9f7b1d3e8f6e/adobe5k_dpe/curl_example_test_output/a4723-_DGW7894.png"/></td>     
+     <td><img src="https://github.com/sjmoran/CURL/blob/2f885e1b779fa0924138355f80fd9f7b1d3e8f6e/adobe5k_dpe/curl_example_test_inference/a4723-_DGW7894_TEST_510_8_PSNR_28.702_SSIM_0.902.jpg"/></td> 
+  </tr>
 </table>
 
 ### Requirements
