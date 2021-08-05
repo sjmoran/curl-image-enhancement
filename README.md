@@ -35,9 +35,9 @@
     <th>Ours (CURL)</th>
   </tr>
   <tr>
-      <td><img src="https://github.com/sjmoran/DeepLPF/blob/7b6ffc8d37d26a29742c0487e94c2e00617ab149/adobe5k_dpe/deeplpf_example_test_input/a4582-DSC_0343_input.png"/></td>     
-     <td><img src="https://github.com/sjmoran/CURL/blob/3f2b9ad10ad5658cbf71ea02928262b9aa0c6c45/adobe5k_dpe/curl_example_test_output/a4582-DSC_0343_gt.png"/></td> 
-    <td><img src="https://github.com/sjmoran/CURL/blob/30bd85a06b5fd600993c2b6285dacb20d77f8a5b/adobe5k_dpe/curl_example_test_inference/a4582-DSC_0343_TEST_1_10_PSNR_18.659_SSIM_0.901.jpg"/></td> 
+      <td><img src="https://github.com/sjmoran/CURL/blob/2451eaf5b9d37a2384339c1d5ba412e4498cbce3/adobe5k_dpe/curl_example_test_input/a4714-Duggan_080613_8704_input.png"/></td>
+     <td><img src="https://github.com/sjmoran/CURL/blob/2451eaf5b9d37a2384339c1d5ba412e4498cbce3/adobe5k_dpe/curl_example_test_output/a4714-Duggan_080613_8704.png"/></td> 
+    <td><img src="https://github.com/sjmoran/CURL/blob/2451eaf5b9d37a2384339c1d5ba412e4498cbce3/adobe5k_dpe/curl_example_test_inference/a4714-Duggan_080613_8704_TEST_510_3_PSNR_27.102_SSIM_0.898.jpg"/></td> 
   </tr>
   <tr>
     <th>Input</th>
