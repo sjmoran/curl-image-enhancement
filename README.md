@@ -79,6 +79,11 @@
      <td><img src="https://github.com/sjmoran/CURL/blob/89b56a5fd539fecac32b14103ddb58e2babc5d3c/adobe5k_dpe/curl_example_test_output/a3232-_DGW6397.png"/></td>   
      <td><img src="https://github.com/sjmoran/CURL/blob/89b56a5fd539fecac32b14103ddb58e2babc5d3c/adobe5k_dpe/curl_example_test_inference/a3232-_DGW6397_VALID_510_2_PSNR_27.860_SSIM_0.952.jpg"/></td> 
   </tr>
+   <tr>
+    <td><img src="https://github.com/sjmoran/CURL/blob/e610b8525c277c64baa9b3ef6eaf7a6a4c339c0a/adobe5k_dpe/curl_example_test_input/a4232-Duggan_090323_6181%20input.png"/></td> 
+     <td><img src="https://github.com/sjmoran/CURL/blob/e610b8525c277c64baa9b3ef6eaf7a6a4c339c0a/adobe5k_dpe/curl_example_test_output/a4232-Duggan_090323_6181.png"/></td>   
+     <td><img src="https://github.com/sjmoran/CURL/blob/e610b8525c277c64baa9b3ef6eaf7a6a4c339c0a/adobe5k_dpe/curl_example_test_inference/a4232-Duggan_090323_6181_VALID_510_19_PSNR_28.413_SSIM_0.975.jpg"/></td> 
+  </tr>
 </table>
 
 ### Requirements
