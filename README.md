@@ -69,6 +69,11 @@
      <td><img src="https://github.com/sjmoran/CURL/blob/6a13e32b0b10f3a3188496e5030a592b0b69ebfc/adobe5k_dpe/curl_example_test_output/a2803-060810_075208_GM6A0020.png"/></td>   
      <td><img src="https://github.com/sjmoran/CURL/blob/6a13e32b0b10f3a3188496e5030a592b0b69ebfc/adobe5k_dpe/curl_example_test_inference/a2803-060810_075208_GM6A0020_VALID_510_30_PSNR_27.756_SSIM_0.982.jpg"/></td> 
   </tr>
+   <tr>
+    <td><img src="https://github.com/sjmoran/CURL/blob/4200767971b31dd715b8c544c9af5d415abdf47d/adobe5k_dpe/curl_example_test_input/a2917-jmac_DSC3800_input.png"/></td>   
+     <td><img src="https://github.com/sjmoran/CURL/blob/4200767971b31dd715b8c544c9af5d415abdf47d/adobe5k_dpe/curl_example_test_output/a2917-jmac_DSC3800.png"/></td>   
+     <td><img src="https://github.com/sjmoran/CURL/blob/4200767971b31dd715b8c544c9af5d415abdf47d/adobe5k_dpe/curl_example_test_inference/a2917-jmac_DSC3800_VALID_510_4_PSNR_31.279_SSIM_0.977.jpg"/></td> 
+  </tr>
 </table>
 
 ### Requirements
