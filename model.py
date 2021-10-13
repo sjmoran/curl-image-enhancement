@@ -184,15 +184,15 @@ class CURLLoss(nn.Module):
         target_img_batch = target_img_batch
 
         ssim_loss_value = Variable(
-            torch.cuda.FloatTensor(torch.zeros(1, 1).cuda()))
+            torch.FloatTensor(torch.zeros(1, 1).cuda()))
         l1_loss_value = Variable(
-            torch.cuda.FloatTensor(torch.zeros(1, 1).cuda()))
+            torch.FloatTensor(torch.zeros(1, 1).cuda()))
         cosine_rgb_loss_value = Variable(
-            torch.cuda.FloatTensor(torch.zeros(1, 1).cuda()))
+            torch.FloatTensor(torch.zeros(1, 1).cuda()))
         hsv_loss_value = Variable(
-            torch.cuda.FloatTensor(torch.zeros(1, 1).cuda()))
+            torch.FloatTensor(torch.zeros(1, 1).cuda()))
         rgb_loss_value = Variable(
-            torch.cuda.FloatTensor(torch.zeros(1, 1).cuda()))
+            torch.FloatTensor(torch.zeros(1, 1).cuda()))
 
         for i in range(0, num_images):
 
@@ -200,14 +200,14 @@ class CURLLoss(nn.Module):
             predicted_img = predicted_img_batch[i, :, :, :].cuda()
 
             predicted_img_lab = torch.clamp(
-                ImageProcessing.rgb_to_lab(predicted_img.squeeze(0)), 0, 1)
+                ImageProcessing.rgb_to_lab(predicted_img.squeeze(0)), 0.0, 1.0)
             target_img_lab = torch.clamp(
-                ImageProcessing.rgb_to_lab(target_img.squeeze(0)), 0, 1)
+                ImageProcessing.rgb_to_lab(target_img.squeeze(0)), 0.0, 1.0)
 
             target_img_hsv = torch.clamp(ImageProcessing.rgb_to_hsv(
-                target_img), 0, 1)
+                target_img), 0.0, 1.0)
             predicted_img_hsv = torch.clamp(ImageProcessing.rgb_to_hsv(
-                predicted_img.squeeze(0)), 0, 1)
+                predicted_img.squeeze(0)), 0.0, 1.0)
 
             predicted_img_hue = (predicted_img_hsv[0, :, :]*2*math.pi)
             predicted_img_val = predicted_img_hsv[2, :, :]
@@ -342,12 +342,11 @@ class CURLLayer(nn.Module):
         torch.cuda.empty_cache()
         shape = x.shape
 
-        img_clamped = torch.clamp(img, 0, 1)
+        img_clamped = torch.clamp(img, 0.0, 1.0)
         img_lab = torch.clamp(ImageProcessing.rgb_to_lab(
-            img_clamped.squeeze(0)), 0, 1)
-
+            img_clamped.squeeze(0)), 0.0, 1.0) 
         feat_lab = torch.cat((feat, img_lab.unsqueeze(0)), 1)
-
+        
         x = self.lab_layer1(feat_lab)
         del feat_lab
         x = self.lab_layer2(x)
@@ -362,10 +361,9 @@ class CURLLayer(nn.Module):
         L = self.fc_lab(x)
 
         img_lab, gradient_regulariser_lab = ImageProcessing.adjust_lab(
-            img_lab.squeeze(0), L[0, 0:48])
-        img_rgb = ImageProcessing.lab_to_rgb(img_lab.squeeze(0))
-        img_rgb = torch.clamp(img_rgb, 0, 1)
-
+            img_lab, L[0, 0:48])
+        img_rgb = ImageProcessing.lab_to_rgb(img_lab)
+        img_rgb = torch.clamp(img_rgb, 0.0, 1.0)
         feat_rgb = torch.cat((feat, img_rgb.unsqueeze(0)), 1)
 
         x = self.rgb_layer1(feat_rgb)
@@ -381,11 +379,10 @@ class CURLLayer(nn.Module):
         R = self.fc_rgb(x)
 
         img_rgb, gradient_regulariser_rgb = ImageProcessing.adjust_rgb(
-            img_rgb.squeeze(0), R[0, 0:48])
-        img_rgb = torch.clamp(img_rgb, 0, 1)
-
-        img_hsv = ImageProcessing.rgb_to_hsv(img_rgb.squeeze(0))
-        img_hsv = torch.clamp(img_hsv, 0, 1)
+            img_rgb, R[0, 0:48])
+        img_hsv = ImageProcessing.rgb_to_hsv(img_rgb)
+        
+        img_hsv = torch.clamp(img_hsv, 0.0, 1.0)
         feat_hsv = torch.cat((feat, img_hsv.unsqueeze(0)), 1)
 
         x = self.hsv_layer1(feat_hsv)
@@ -403,13 +400,12 @@ class CURLLayer(nn.Module):
 
         img_hsv, gradient_regulariser_hsv = ImageProcessing.adjust_hsv(
             img_hsv, H[0, 0:64])
-        img_hsv = torch.clamp(img_hsv, 0, 1)
+        img_hsv = torch.clamp(img_hsv, 0.0, 1.0)
 
         img_residual = torch.clamp(ImageProcessing.hsv_to_rgb(
-           img_hsv.squeeze(0)), 0, 1)
+           img_hsv), 0.0, 1.0)
 
-        img = torch.clamp(img + img_residual.unsqueeze(0), 0, 1)
-
+        img = torch.clamp(img + img_residual.unsqueeze(0), 0.0, 1.0)
         gradient_regulariser = gradient_regulariser_rgb + \
             gradient_regulariser_lab+gradient_regulariser_hsv
 
