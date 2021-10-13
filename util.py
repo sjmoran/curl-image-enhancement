@@ -80,11 +80,10 @@ class ImageProcessing(object):
         img[0, :, :] = img[0, :, :]/100
         img[1, :, :] = (img[1, :, :]/110 + 1)/2
         img[2, :, :] = (img[2, :, :]/110 + 1)/2
-
-        img[(img != img).detach()] = 0
+        
+        #img[(img != img).detach()] = 0  # This line causes memory error
 
         img = img.contiguous()
-
         return img.cuda()
 
     @staticmethod
@@ -115,7 +114,7 @@ class ImageProcessing(object):
         ]), requires_grad=False).cuda()
 
         img = torch.matmul(
-            img + Variable(torch.cuda.FloatTensor([16.0, 0.0, 0.0])), lab_to_fxfyfz)
+            img + Variable(torch.FloatTensor([16.0, 0.0, 0.0]).cuda()), lab_to_fxfyfz)
 
         epsilon = 6.0/29.0
 
@@ -124,7 +123,7 @@ class ImageProcessing(object):
 
         # denormalize for D65 white point
         img = torch.mul(img, Variable(
-            torch.cuda.FloatTensor([0.950456, 1.0, 1.088754])))
+            torch.FloatTensor([0.950456, 1.0, 1.088754]).cuda()))
 
         xyz_to_rgb = Variable(torch.FloatTensor([  # X Y Z
             [3.2404542, -0.9692660,  0.0556434],  # R
@@ -141,7 +140,7 @@ class ImageProcessing(object):
         img = img.permute(2, 1, 0)
 
         img = img.contiguous()
-        img[(img != img).detach()] = 0
+        #img[(img != img).detach()] = 0 # This line causes memory error
         
         return img
 
@@ -270,7 +269,7 @@ class ImageProcessing(object):
         :rtype: Tensor
 
         """
-        img=torch.clamp(img,0,1)
+        img=torch.clamp(img, 0.0, 1.0)
         img = img.permute(2, 1, 0)
         
         m1 = 0
@@ -279,31 +278,31 @@ class ImageProcessing(object):
         m4 = -1*m2
         m5 = 0
 
-        r = img[:, :, 2]+torch.clamp(img[:, :, 0]*360-0, 0, 60)*m1+torch.clamp(img[:, :, 0]*360-60, 0, 60)*m2+torch.clamp(
-            img[:, :, 0]*360-120, 0, 120)*m3+torch.clamp(img[:, :, 0]*360-240, 0, 60)*m4+torch.clamp(img[:, :, 0]*360-300, 0, 60)*m5
+        r = img[:, :, 2]+torch.clamp(img[:, :, 0]*360-0, 0.0, 60.0)*m1+torch.clamp(img[:, :, 0]*360-60, 0.0, 60.0)*m2+torch.clamp(
+            img[:, :, 0]*360-120, 0.0, 120.0)*m3+torch.clamp(img[:, :, 0]*360-240, 0.0, 60.0)*m4+torch.clamp(img[:, :, 0]*360-300, 0.0, 60.0)*m5
 
         m1 = (img[:, :, 2]-img[:, :, 2]*(1-img[:, :, 1]))/60
         m2 = 0
         m3 = -1*m1
         m4 = 0
 
-        g = img[:, :, 2]*(1-img[:, :, 1])+torch.clamp(img[:, :, 0]*360-0, 0, 60)*m1+torch.clamp(img[:, :, 0]*360-60,
-                                                                                                0, 120)*m2+torch.clamp(img[:, :, 0]*360-180, 0, 60)*m3+torch.clamp(img[:, :, 0]*360-240, 0, 120)*m4
+        g = img[:, :, 2]*(1-img[:, :, 1])+torch.clamp(img[:, :, 0]*360-0, 0.0, 60.0)*m1+torch.clamp(img[:, :, 0]*360-60,
+                                                                                                0.0, 120.0)*m2+torch.clamp(img[:, :, 0]*360-180, 0.0, 60.0)*m3+torch.clamp(img[:, :, 0]*360-240, 0.0, 120.0)*m4
 
         m1 = 0
         m2 = (img[:, :, 2]-img[:, :, 2]*(1-img[:, :, 1]))/60
         m3 = 0
         m4 = -1*m2
 
-        b = img[:, :, 2]*(1-img[:, :, 1])+torch.clamp(img[:, :, 0]*360-0, 0, 120)*m1+torch.clamp(img[:, :, 0]*360 -
-                                                                                                 120, 0, 60)*m2+torch.clamp(img[:, :, 0]*360-180, 0, 120)*m3+torch.clamp(img[:, :, 0]*360-300, 0, 60)*m4
+        b = img[:, :, 2]*(1-img[:, :, 1])+torch.clamp(img[:, :, 0]*360-0, 0.0, 120.0)*m1+torch.clamp(img[:, :, 0]*360 -
+                                                                                                 120, 0.0, 60.0)*m2+torch.clamp(img[:, :, 0]*360-180, 0.0, 120.0)*m3+torch.clamp(img[:, :, 0]*360-300, 0.0, 60.0)*m4
 
         img = torch.stack((r, g, b), 2)
-        img[(img != img).detach()] = 0
+        #img[(img != img).detach()] = 0 # This causes memory error
 
         img = img.permute(2, 1, 0)
         img = img.contiguous()
-        img = torch.clamp(img, 0, 1)
+        img = torch.clamp(img, 0.0, 1.0)
 
         return img
 
@@ -320,7 +319,7 @@ class ImageProcessing(object):
         :rtype: Tensor
 
         """
-        img=torch.clamp(img,1e-9,1)       
+        img=torch.clamp(img, 10**(-9), 1.0)       
 
         img = img.permute(2, 1, 0)
         shape = img.shape
@@ -336,14 +335,10 @@ class ImageProcessing(object):
         zero = Variable(torch.FloatTensor(torch.zeros(shape[0:2]))).cuda()
 
         img = img.view(shape)
-
-        ones1 = ones[0:math.floor((ones.shape[0]/2))]
-        ones2 = ones[math.floor(ones.shape[0]/2):(ones.shape[0])]
-
-        mx1 = mx[0:math.floor((ones.shape[0]/2))]
-        mx2 = mx[math.floor(ones.shape[0]/2):(ones.shape[0])]
-        mn1 = mn[0:math.floor((ones.shape[0]/2))]
-        mn2 = mn[math.floor(ones.shape[0]/2):(ones.shape[0])]
+        
+        ones1, ones2 = torch.chunk(ones, 2, dim=0)
+        mx1, mx2 = torch.chunk(mx, 2, dim=0)
+        mn1, mn2 = torch.chunk(mn, 2, dim=0)
 
         df1 = torch.add(mx1, torch.mul(ones1*-1, mn1))
         df2 = torch.add(mx2, torch.mul(ones2*-1, mn2))
@@ -381,19 +376,18 @@ class ImageProcessing(object):
             mx.eq(zero).float()*(zero)
         img_copy2[:, :, 2] = mx
         
-        img_copy2[(img_copy2 != img_copy2).detach()] = 0
+        #img_copy2[(img_copy2 != img_copy2).detach()] = 0 # This line causes memory error
 
         img = img_copy2.clone()
 
         img = img.permute(2, 1, 0)
-        img = torch.clamp(img, 1e-9, 1)
+        img = torch.clamp(img, 10**(-9), 1.0)
 
         return img
 
     
     @staticmethod
-    def apply_curve(img, C, slope_sqr_diff, channel_in, channel_out,
-    clamp=False):
+    def apply_curve(img, C, slope_sqr_diff, channel_in, channel_out):
         """Applies a peicewise linear curve defined by a set of knot points to
         an image channel
 
@@ -409,30 +403,23 @@ class ImageProcessing(object):
         '''
         Compute the slope of the line segments
         '''
-        for i in range(0, C.shape[0]-1):
-            slope[i] = C[i+1]-C[i]
+        slope = C[1:]-C[0:-1]
 
         '''
         Compute the squared difference between slopes
         '''
-        for i in range(0, slope.shape[0]-1):
-            slope_sqr_diff += (slope[i+1]-slope[i])*(slope[i+1]-slope[i])
+        slope_sqr_diff += ((slope[1:]-slope[0:-1])**2).sum(0)
 
         '''
         Use predicted line segments to compute scaling factors for the channel
         '''
-        scale = float(C[0])
-        for i in range(0, slope.shape[0]-1):
-            if clamp:
-                scale += float(slope[i])*(torch.clamp(img[:, :,channel_in]*curve_steps-i,0,1))
-            else:
-                scale += float(slope[i])*(img[:, :,channel_in]*curve_steps-i)
+        steps = torch.arange(0, slope.shape[0]-1).cuda()
+        image_channel = torch.unsqueeze(img[:, :,channel_in], -1) # expand dims to broadcast
+        scale = C[0] + (slope[:-1] * (curve_steps * image_channel - steps)).sum(-1) # eq. 1
                 
         img_copy = img.clone()
-  
         img_copy[:, :, channel_out] = img[:, :, channel_out]*scale
-        
-        img_copy = torch.clamp(img_copy,0,1)
+        img_copy = torch.clamp(img_copy, 0.0, 1.0)
         
         return img_copy, slope_sqr_diff
 
@@ -446,14 +433,12 @@ class ImageProcessing(object):
         :rtype: Tensor, float
 
         """
-        img = img.squeeze(0).permute(2, 1, 0)
+        img = img.permute(2, 1, 0)
         shape = img.shape
         img = img.contiguous()
 
-        S1 = torch.exp(S[0:int(S.shape[0]/4)])
-        S2 = torch.exp(S[(int(S.shape[0]/4)):(int(S.shape[0]/4)*2)])
-        S3 = torch.exp(S[(int(S.shape[0]/4)*2):(int(S.shape[0]/4)*3)])
-        S4 = torch.exp(S[(int(S.shape[0]/4)*3):(int(S.shape[0]/4)*4)])
+        S1, S2, S3, S4 = torch.chunk(S, 4, dim=0)
+        S1, S2, S3, S4 = torch.exp(S1), torch.exp(S2), torch.exp(S3), torch.exp(S4)
 
         slope_sqr_diff = Variable(torch.zeros(1)*0.0).cuda()
 
@@ -484,7 +469,7 @@ class ImageProcessing(object):
         img = img_copy.clone()
         del img_copy
 
-        img[(img != img).detach()] = 0
+        #img[(img != img).detach()] = 0 # This line causes memory error
 
         img = img.permute(2, 1, 0)
         img = img.contiguous()
@@ -501,16 +486,15 @@ class ImageProcessing(object):
         :rtype: Tensor, float
 
         """
-        img = img.squeeze(0).permute(2, 1, 0)
+        img = img.permute(2, 1, 0)
         shape = img.shape
         img = img.contiguous()
 
         '''
         Extract the parameters of the three curves
         '''
-        R1 = torch.exp(R[0:int(R.shape[0]/3)])
-        R2 = torch.exp(R[(int(R.shape[0]/3)):(int(R.shape[0]/3)*2)])
-        R3 = torch.exp(R[(int(R.shape[0]/3)*2):(int(R.shape[0]/3)*3)])
+        R1, R2, R3 = torch.chunk(R, 3, dim=0)
+        R1, R2, R3 = torch.exp(R1), torch.exp(R2), torch.exp(R3)
 
         '''
         Apply the curve to the R channel 
@@ -535,7 +519,7 @@ class ImageProcessing(object):
         img = img_copy.clone()
         del img_copy
 
-        img[(img != img).detach()] = 0
+        #img[(img != img).detach()] = 0 # This line causes memory error
 
         img = img.permute(2, 1, 0)
         img = img.contiguous()
@@ -553,16 +537,14 @@ class ImageProcessing(object):
 
         """
         img = img.permute(2, 1, 0)
-
         shape = img.shape
         img = img.contiguous()
 
         '''
         Extract predicted parameters for each L,a,b curve
         '''
-        L1 = torch.exp(L[0:int(L.shape[0]/3)])
-        L2 = torch.exp(L[(int(L.shape[0]/3)):(int(L.shape[0]/3)*2)])
-        L3 = torch.exp(L[(int(L.shape[0]/3)*2):(int(L.shape[0]/3)*3)])
+        L1, L2, L3 = torch.chunk(L, 3, dim=0)
+        L1, L2, L3 = torch.exp(L1), torch.exp(L2), torch.exp(L3)
 
         slope_sqr_diff = Variable(torch.zeros(1)*0.0).cuda()
 
@@ -587,7 +569,7 @@ class ImageProcessing(object):
         img = img_copy.clone()
         del img_copy
 
-        img[(img != img).detach()] = 0
+        #img[(img != img).detach()] = 0 # This line causes memory error
 
         img = img.permute(2, 1, 0)
         img = img.contiguous()
