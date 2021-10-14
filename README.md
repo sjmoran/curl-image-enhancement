@@ -8,7 +8,7 @@
    Repository links for the paper <i>CURL: Neural Curve Layers for Global Image Enhancement</i>. In this repository you will find a link to the code and information of the datasets. Please raise a Github issue if you need assistance of have any questions on the research. 
 </p>
 
-**_BATCH SIZE:_ Note this code is designed for a batch size of 1. It needs re-engineered to support higher batch sizes. Using higher batch sizes is not supported currently and could lead to artefacts. To replicate our reported results please use a batch size of 1 only.**
+**_BATCH SIZE:_ Note this code is designed for a batch size of 1. It needs re-engineered to support higher batch sizes. Using higher batch sizes is not supported currently. To replicate our reported results please use a batch size of 1 only.**
 
 ### [[Paper]](https://arxiv.org/pdf/1911.13175)  [[Supplementary]](https://sjmoran.github.io/pdfs/CURL_supplementary.pdf) [[Video]](https://youtu.be/66FnRfDR_Oo) [[Poster]](https://sjmoran.github.io/pdfs/CURL_ICPR_POSTER.pdf) [[Slides]](https://sjmoran.github.io/pdfs/DeepLPFDataBites.pdf) 
 
