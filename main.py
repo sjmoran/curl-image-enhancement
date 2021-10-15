@@ -83,6 +83,7 @@ def main():
     logging.info('Training image directory: ' + str(training_img_dirpath))
     logging.info('##############################')
 
+    BATCH_SIZE=1  # *** WARNING: batch size of > 1 not supported in current version of code ***
 
     if (checkpoint_filepath is not None) and (inference_img_dirpath is not None):
 
@@ -95,6 +96,8 @@ def main():
                                 a1242.tif
                                 etc
         '''
+        assert(BATCH_SIZE==1)
+
         inference_data_loader = Adobe5kDataLoader(data_dirpath=inference_img_dirpath,
                                                   img_ids_filepath=inference_img_dirpath+"/images_inference.txt")
         inference_data_dict = inference_data_loader.load_data()
@@ -102,7 +105,7 @@ def main():
                                     transform=transforms.Compose([transforms.ToTensor()]), normaliser=1,
                                     is_inference=True)
 
-        inference_data_loader = torch.utils.data.DataLoader(inference_dataset, batch_size=1, shuffle=False,
+        inference_data_loader = torch.utils.data.DataLoader(inference_dataset, batch_size=BATCH_SIZE, shuffle=False,
                                                             num_workers=10)
 
         '''
@@ -124,7 +127,8 @@ def main():
         inference_evaluator.evaluate(net, epoch=0)
 
     else:
-        
+        assert(BATCH_SIZE==1)
+
         training_data_loader = Adobe5kDataLoader(data_dirpath=training_img_dirpath,
                                                  img_ids_filepath=training_img_dirpath+"/images_train.txt")
         training_data_dict = training_data_loader.load_data()
@@ -141,11 +145,11 @@ def main():
         testing_data_dict = testing_data_loader.load_data()
         testing_dataset = Dataset(data_dict=testing_data_dict, normaliser=1,is_valid=True)
 
-        training_data_loader = torch.utils.data.DataLoader(training_dataset, batch_size=1, shuffle=True,
+        training_data_loader = torch.utils.data.DataLoader(training_dataset, batch_size=BATCH_SIZE, shuffle=True,
                                                        num_workers=6)
-        testing_data_loader = torch.utils.data.DataLoader(testing_dataset, batch_size=1, shuffle=False,
+        testing_data_loader = torch.utils.data.DataLoader(testing_dataset, batch_size=BATCH_SIZE, shuffle=False,
                                                       num_workers=6)
-        validation_data_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=1,
+        validation_data_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=BATCH_SIZE,
                                                          shuffle=False,
                                                          num_workers=6)
    
@@ -200,7 +204,6 @@ def main():
         examples = 0
         psnr_avg = 0.0
         ssim_avg = 0.0
-        batch_size = 1
         total_examples = 0
 
         for epoch in range(start_epoch,num_epoch):
@@ -232,8 +235,8 @@ def main():
                 optimizer.step()
 
                 running_loss += loss.data[0]
-                examples += batch_size
-                total_examples+=batch_size
+                examples += BATCH_SIZE
+                total_examples+=BATCH_SIZE
 
                 writer.add_scalar('Loss/train', loss.data[0], total_examples)
 
@@ -268,8 +271,8 @@ def main():
                                  gt_img_batch, gradient_regulariser)
 
                 running_loss += loss.data[0]
-                examples += batch_size
-                total_examples+=batch_size
+                examples += BATCH_SIZE
+                total_examples+=BATCH_SIZE
                 writer.add_scalar('Loss/train', loss.data[0], total_examples)
 
 
