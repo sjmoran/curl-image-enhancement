@@ -10,7 +10,7 @@
 
 **_BATCH SIZE:_ Note this code is designed for a batch size of 1. It needs re-engineered to support higher batch sizes. Using higher batch sizes is not supported currently. To replicate our reported results please use a batch size of 1 only. If you do have a patch for CURL to support higher batch sizes please raise a pull request on this repo and we will integrate.**
 
-**UPDATE 30th May 2022:** Github user [mahdip72]([https://github.com/mahdip72/CURL] has kindly provided a refactored version of CURL. See [Issue 31](https://github.com/sjmoran/CURL/issues/31). A copy can also be found in [CURL_refactored.gz](https://github.com/sjmoran/CURL/blob/master/CURL_refactored.tar.gz). Note the authors of the paper have not tested this version of CURL.
+**UPDATE 30th May 2022:** Github user [mahdip72](https://github.com/mahdip72/CURL) has kindly provided a refactored version of CURL. See [Issue 31](https://github.com/sjmoran/CURL/issues/31). A copy can also be found in [CURL_refactored.gz](https://github.com/sjmoran/CURL/blob/master/CURL_refactored.tar.gz). Note the authors of the paper have not tested this version of CURL.
 
 **UPDATE 19th April 2022:** Github user [barbodpj](https://github.com/barbodpj) has kindly provided a batch > 1 version of CURL. See [Issue 27](https://github.com/sjmoran/CURL/issues/27). A copy can also be found in [CURL_large_batch.tar.gz](https://github.com/sjmoran/CURL/blob/master/CURL_large_batch.tar.gz). Note the authors of the paper have not tested this version of CURL.
 
