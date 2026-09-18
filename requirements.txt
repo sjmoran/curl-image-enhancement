@@ -1,0 +1,7 @@
+numpy>=1.24
+torch>=2.0
+torchvision>=0.15
+scikit-image>=0.19
+matplotlib>=3.6
+Pillow>=9.0
+tensorboard>=2.12
