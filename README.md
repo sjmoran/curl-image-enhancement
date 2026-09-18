@@ -321,15 +321,6 @@ S7-ISP-Dataset-20161110_130117   S7-ISP-Dataset-20161109_134017
 The TED backbone is available on its own: `rgb_ted.py` for RGB images,
 `raw_ted.py` for RAW.
 
-Three community contributions are mirrored in this repository. None has been
-tested by the paper's authors.
-
-| Contribution | By | Copy here |
-|---|---|---|
-| Refactored CURL ([issue 31](https://github.com/sjmoran/CURL/issues/31)) | [mahdip72](https://github.com/mahdip72/CURL) | [`CURL_refactored.tar.gz`](./CURL_refactored.tar.gz) |
-| Batch size > 1 ([issue 27](https://github.com/sjmoran/CURL/issues/27)) | [barbodpj](https://github.com/barbodpj) | [`CURL_large_batch.tar.gz`](./CURL_large_batch.tar.gz) |
-| RGB model and weights | [hermosayhl](https://github.com/hermosayhl) | [`CURL_for_RGB_images.zip`](./CURL_for_RGB_images.zip) |
-
 ## Repository layout
 
 | | |

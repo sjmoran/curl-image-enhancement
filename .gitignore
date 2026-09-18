@@ -2,3 +2,4 @@ __pycache__/
 log_*/
 runs/
 *.pyc
+.pytest_cache/
